@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saleslead_Interactor", "Interactor\Saleslead_Interactor.csproj", "{149097CB-E099-4779-AACE-8799A6E74AD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesLead_Entity", "Entity\SalesLead_Entity.csproj", "{261326B1-B313-4340-AD8C-A84EFD9A1539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saleslead_InteractorTest", "Saleslead_InteractorTest\Saleslead_InteractorTest.csproj", "{5FEA91C5-11E7-4B19-87AE-A32B58176D34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{149097CB-E099-4779-AACE-8799A6E74AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{149097CB-E099-4779-AACE-8799A6E74AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{149097CB-E099-4779-AACE-8799A6E74AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{149097CB-E099-4779-AACE-8799A6E74AD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{261326B1-B313-4340-AD8C-A84EFD9A1539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{261326B1-B313-4340-AD8C-A84EFD9A1539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{261326B1-B313-4340-AD8C-A84EFD9A1539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{261326B1-B313-4340-AD8C-A84EFD9A1539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FEA91C5-11E7-4B19-87AE-A32B58176D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FEA91C5-11E7-4B19-87AE-A32B58176D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FEA91C5-11E7-4B19-87AE-A32B58176D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FEA91C5-11E7-4B19-87AE-A32B58176D34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
