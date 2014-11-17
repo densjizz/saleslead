@@ -17,11 +17,7 @@ namespace Interactor
             _leads = new LeadList();
         }
 
-        public void AddActionToLead(Entity.Activity.LeadAction action, Lead newLead)
-        {
-            newLead.Actions.Add(action);
-            
-        }
+        
 
         public Lead GetLead(Guid requestedLeadUID)
         {
@@ -60,6 +56,16 @@ namespace Interactor
             newLead.Title = LeadTitle;
             _leads.AddLead(newLead);
             return newLead.UID;
+        }
+
+        public void AddActionToLead(Entity.Activity.LeadAction action, Lead newLead)
+        {
+            newLead.Actions.Add(action);
+        }
+
+        public void DeleteLead(Guid uid)
+        {
+            _leads.Delete(uid);
         }
     }
 }

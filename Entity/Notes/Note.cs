@@ -1,4 +1,5 @@
 ﻿using Entity.Interfaces;
+using Entity.Modifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Entity.Notes
 {
-    public class Note : ICreatable, IModifiable
+    public class Note
     {
         public Guid UID { get; set; }
         
@@ -17,7 +18,6 @@ namespace Entity.Notes
         public string CreateBy { get; set; }
         public DateTime CreateDate { get; set; }
 
-        public string ModifiedBy { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public ChangeStamp ModificationStamp { get; set; }
     }
 }

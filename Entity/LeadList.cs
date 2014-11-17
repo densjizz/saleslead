@@ -23,8 +23,6 @@ namespace Entity
                 newLead.Title = "Lead Item " + i;
                 newLead.Status = new Status.Status();
                 newLead.Rating = new Rating.Rating();
-                newLead.CreateBy = "System";
-                newLead.CreateDate = DateTime.Now;
                 _leads.Add(newLead);
             }
         }
@@ -54,6 +52,16 @@ namespace Entity
         {
             List<Lead> result = new List<Lead>(_leads);            
             return result;
+        }
+
+        public void Delete(Guid uid)
+        {
+            for (int i = 0; i < _leads.Count; i++) {
+                if (_leads[i].UID == uid) {
+                    _leads.RemoveAt(i);
+                    return;
+                }
+            }
         }
     }
 }

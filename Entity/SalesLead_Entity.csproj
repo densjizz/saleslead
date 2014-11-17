@@ -48,11 +48,10 @@
     <Compile Include="Business\Supplier.cs" />
     <Compile Include="Collaboration\Contributer.cs" />
     <Compile Include="Collaboration\User.cs" />
-    <Compile Include="Interfaces\ICreatable.cs" />
-    <Compile Include="Interfaces\IModifiable.cs" />
     <Compile Include="Interfaces\IReadNotify.cs" />
     <Compile Include="Lead.cs" />
     <Compile Include="LeadList.cs" />
+    <Compile Include="Modifications\ChangeStamp.cs" />
     <Compile Include="States\CreationState.cs" />
     <Compile Include="States\ModficationState.cs" />
     <Compile Include="Notes\Note.cs" />
@@ -64,9 +63,7 @@
     <Compile Include="Status\LeadStatus.cs" />
     <Compile Include="Status\Status.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modifications\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

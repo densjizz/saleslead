@@ -9,7 +9,7 @@ namespace Entity.Status
     public class LeadStatus : Status
     {
         public int Order { get; set; }
-
+        public override string DefaultText { get { return "Default Status"; } } 
         
     }
 }

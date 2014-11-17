@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Entity;
 using Interactor;
 using Entity.Activity;
+using Entity.Modifications;
 using System.Collections.Generic;
 
 namespace Saleslead_InteractorTest
@@ -10,9 +11,6 @@ namespace Saleslead_InteractorTest
     [TestClass]
     public class LeadInteractionsTest
     {
-
-
-
 
         [TestMethod]
         public void GetAllLeads() { 
@@ -38,31 +36,32 @@ namespace Saleslead_InteractorTest
             LeadActionInteractions leadActionInteractions = new LeadActionInteractions();
 
             Lead l = null;
-            
-            //l.Title
             string LeadTitle = "New lead title";
-            //l.Status
-            //l.Rating
-            //l.Notes
-            //l.CurrentAction
-            //l.Contributers
-            //l.Contacts
-            //l.Amount
-            //l.Actions
                
             //Act
             Guid LeadGuid = leadInteractions.AddLead(LeadTitle);
             Lead newlyCreatedLead = leadInteractions.GetLead(LeadGuid);
 
-
             //Assert
             Assert.IsTrue(newlyCreatedLead.UID == LeadGuid);
-            Assert.IsTrue( (DateTime.Now - newlyCreatedLead.CreateDate) < new TimeSpan(0,0,5));
             Assert.IsTrue(newlyCreatedLead.UID != Guid.Empty);
-            Assert.IsTrue(newlyCreatedLead.CreateBy != null);
-            Assert.IsTrue(newlyCreatedLead.ModifiedBy != null);
-            Assert.IsTrue(newlyCreatedLead.CreateBy != null);
-            Assert.IsTrue(newlyCreatedLead.CreateBy != null);
+            Assert.IsTrue((DateTime.Now - newlyCreatedLead.CreatedStamp.Date) < new TimeSpan(0, 5, 0));
+
+            Assert.IsTrue(newlyCreatedLead.ModifiedStamp != null);
+            Assert.IsTrue(newlyCreatedLead.ModifiedStamp.By != null);
+
+            Assert.IsTrue(newlyCreatedLead.CreatedStamp != null);
+            Assert.IsTrue(newlyCreatedLead.CreatedStamp.By != null);
+            Assert.IsTrue(newlyCreatedLead.CreatedStamp.Date != DateTime.MinValue);
+
+            Assert.IsTrue(newlyCreatedLead.Status != null);
+            Assert.IsTrue(!string.IsNullOrEmpty(newlyCreatedLead.Status.Text));
+            Assert.IsTrue(newlyCreatedLead.Status.UID != null && newlyCreatedLead.Status.UID != Guid.Empty);
+
+            Assert.IsTrue(newlyCreatedLead.Rating != null);
+            Assert.IsTrue(!string.IsNullOrEmpty(newlyCreatedLead.Rating.Text));
+            Assert.IsTrue(newlyCreatedLead.Rating.UID != null && newlyCreatedLead.Rating.UID != Guid.Empty);
+            
         }
 
         [TestMethod]
@@ -70,14 +69,13 @@ namespace Saleslead_InteractorTest
         {
             //Arrange
             LeadInteractions leadInteractions = new LeadInteractions();
-            LeadActionInteractions leadActionInteractions = new LeadActionInteractions();
 
 
             Lead newLead = null;
 
             //Act
             int index = 0;
-            int NumberOfLeads = 0;
+            int NumberOfLeads = 5;
             List<Lead> leadList = leadInteractions.GetLeads(index, NumberOfLeads);
 
 
@@ -89,6 +87,22 @@ namespace Saleslead_InteractorTest
         [TestMethod]
         public void DeleteLead()
         {
+            //Arrange
+            LeadInteractions leadInteractions = new LeadInteractions();
+
+            Random r = new Random();
+            int rdmNumber = r.Next() * 10000;
+            string NewLeadTitle = "NewLeadTest" + rdmNumber;
+            Guid newLeadUID = leadInteractions.AddLead(NewLeadTitle);
+            int totalNumberOfLeads = leadInteractions.GetLeads().Count;
+
+            //Act
+            leadInteractions.DeleteLead(newLeadUID);
+            int newTotalNumberOfLeads = leadInteractions.GetLeads().Count;
+            int delta = totalNumberOfLeads - newTotalNumberOfLeads;
+
+            //Assert
+            Assert.IsTrue(delta == 1);
         }
 
         

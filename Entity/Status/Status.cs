@@ -10,9 +10,11 @@ namespace Entity.Status
     {
         public Guid UID { get; set; }
         public string Text { get; set; }
+        public virtual string DefaultText { get; private set; }
 
         public Status() {
             UID = Guid.NewGuid();
+            Text = DefaultText;
         }
     }
 }

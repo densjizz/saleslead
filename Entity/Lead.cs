@@ -9,10 +9,11 @@ using Entity.Notes;
 using Entity.Collaboration;
 using Entity.Business;
 using Entity.Activity;
+using Entity.Modifications;
 
 namespace Entity
 {
-    public class Lead : IModifiable, ICreatable
+    public class Lead
     {
         public Guid UID { get; set; }
         public string Title { get; set; }
@@ -24,22 +25,22 @@ namespace Entity
         public List<Contributer> Contributers { get; set; }
         public List<LeadAction> Actions { get; set; }
 
-        public string ModifiedBy {get; set;}
-        public DateTime ModifiedDate { get; set; }
-
-        public string CreateBy { get; set; }
-        public DateTime CreateDate { get; set; }
-
+        public ChangeStamp ModifiedStamp { get; set; }
+        public ChangeStamp CreatedStamp { get; set; }
 
         public Lead() {
             UID = Guid.NewGuid();
-            CreateDate = DateTime.Now;
+            
             Rating = new Rating.LeadRating();
             Status = new Status.LeadStatus();
             Notes = new List<Note>();
             Contacts = new List<Contact>();
             Contributers = new List<Contributer>();
             Actions = new List<LeadAction>();
+            ModifiedStamp = new ChangeStamp();
+            CreatedStamp = new ChangeStamp();
+            CreatedStamp.Date = DateTime.Now;
+            CreatedStamp.By = "System";
         }
 
     }
