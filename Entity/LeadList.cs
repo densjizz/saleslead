@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class LeadList
+    public class LeadLibrary
     {
 
         private List<Lead> _leads { get; set; }
 
-        public LeadList() {
+        public LeadLibrary() {
             LoadLeads();
         }
 

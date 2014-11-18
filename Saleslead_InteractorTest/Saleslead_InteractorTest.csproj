@@ -52,17 +52,15 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LeadInteractionsTest.cs" />
-    <Compile Include="ActionInterfactionsTest.cs" />
-    <Compile Include="NoteInteractionsTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entity\SalesLead_Entity.csproj">
-      <Project>{261326b1-b313-4340-ad8c-a84efd9a1539}</Project>
-      <Name>SalesLead_Entity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Interactor\Saleslead_Interactor.csproj">
       <Project>{149097cb-e099-4779-aace-8799a6e74ad8}</Project>
       <Name>Saleslead_Interactor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Saleslead_Contract\Saleslead_Contract.csproj">
+      <Project>{8895d740-4975-4355-905f-715bed16acab}</Project>
+      <Name>Saleslead_Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entity;
+using Saleslead_Contract;
+using Saleslead_Contract.Lead;
+
+
+
 
 namespace Interactor
 {
@@ -11,66 +16,47 @@ namespace Interactor
     {
 
 
-        private LeadList _leads;
+        private LeadLibrary _leads;
 
         public LeadInteractions() {
-            _leads = new LeadList();
+            _leads = new LeadLibrary();
         }
 
-        
-
-        public Lead GetLead(Guid requestedLeadUID)
+        public LeadLibraryResponse GetLeads()
         {
-            return _leads.GetLead(requestedLeadUID);
+            List<Lead> leads = _leads.GetAllLeads();
+            return ConvertToLeadLibraryResponse(leads);
         }
 
-        public List<Lead> GetLeads(int index, int NumberOfLeads)
+        private LeadLibraryResponse ConvertToLeadLibraryResponse(List<Lead> leads)
         {
-            
-            List<Lead> leadList = new List<Lead>();
-
-            
-
-            for (int i = index; i < NumberOfLeads; i++) {
-                Lead lead = _leads.GetLead(i);
-                leadList.Add(lead);
+            LeadLibraryResponse response = new LeadLibraryResponse();
+            foreach (Lead lead in leads)
+            {
+                response.leads.Add(ConvertToLeadResponse(lead));
             }
-
-
-            return leadList;
+            return response;
         }
 
-        public void AddLead(Lead newLead)
+        private LeadResponse ConvertToLeadResponse(Lead e)
         {
-            _leads.AddLead(newLead);
+            LeadResponse leadResponse = new LeadResponse();
+            leadResponse.Amount = e.Amount;
+            leadResponse.CreatedBy = e.CreatedStamp.By;
+            leadResponse.CreatedDate = e.CreatedStamp.Date;
+            leadResponse.ModifiedBy = e.ModifiedStamp.By;
+            leadResponse.ModifiedDate = e.ModifiedStamp.Date;
+            leadResponse.Title = e.Title;
+            leadResponse.UID = e.UID;
+            return leadResponse;
         }
 
-        public List<Lead> GetLeads()
-        {
-            return _leads.GetAllLeads();
-        }
 
-        public Guid AddLead(string LeadTitle)
+        public LeadResponse GetLead(LeadRequest request)
         {
-            Lead newLead = new Lead();
-            newLead.Title = LeadTitle;
-            _leads.AddLead(newLead);
-            return newLead.UID;
-        }
 
-        public void AddActionToLead(Entity.Activity.LeadAction action, Lead newLead)
-        {
-            newLead.Actions.Add(action);
-        }
-
-        public void DeleteLead(Guid uid)
-        {
-            _leads.Delete(uid);
-        }
-
-        public Lead GetLead(int index)
-        {
-            return _leads.GetLead(index);
+            Lead lead = _leads.GetLead(request.UID);
+            return ConvertToLeadResponse(lead);
         }
     }
 }
