@@ -20,5 +20,17 @@ namespace Saleslead_Contract.Lead
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
 
+
+        public void SetCreateInfo(string by, DateTime time)
+        {
+            CreatedDate = time;
+            CreatedBy = by;
+        }
+
+        public void SetModificationInfo(string by, DateTime time)
+        {
+            ModifiedBy = by;
+            ModifiedDate = time;
+        }
     }
 }

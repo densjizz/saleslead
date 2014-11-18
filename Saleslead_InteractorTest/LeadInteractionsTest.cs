@@ -51,10 +51,40 @@ namespace Saleslead_InteractorTest
             //assert
             Assert.IsTrue(response != null);
             Assert.IsTrue(response.UID == createLeadRequest.UID);
+            Assert.IsTrue(response.Title == createLeadRequest.Title);
+            Assert.IsTrue(response.Amount == createLeadRequest.Amount);
+            Assert.IsTrue(response.CreatedBy == createLeadRequest.CreatedBy);
+            Assert.IsTrue(response.CreatedDate == createLeadRequest.CreatedDate);
+            Assert.IsTrue(response.IsValid);
+            
         }
 
-        
-      
+        [TestMethod]
+        public void UpdateLead() {
+            //Arrange
+            LeadInteractions leadInteractions = new LeadInteractions();
+            UpdateLeadRequest UpdateLeadRequest = new UpdateLeadRequest();
+            var allLeads = leadInteractions.GetLeads();
+            UpdateLeadRequest.UID = allLeads.leads[0].UID;
+
+            //Act
+            var response = leadInteractions.UpdateLead(UpdateLeadRequest);
+
+            //assert
+            Assert.IsTrue(response != null);
+            Assert.IsTrue(response.UID == UpdateLeadRequest.UID);
+            Assert.IsTrue(response.Title == UpdateLeadRequest.Title);
+            Assert.IsTrue(response.Amount == UpdateLeadRequest.Amount);
+            Assert.IsTrue(response.ModifiedBy == UpdateLeadRequest.ModifiedBy);
+            Assert.IsTrue(response.ModifiedDate == UpdateLeadRequest.ModifiedDate);
+            Assert.IsTrue(response.IsValid);
+        }
+
+
+        [TestMethod]
+        public void Delete() { 
+            
+        }
 
     }
 }

@@ -8,5 +8,6 @@ namespace Saleslead_Contract.Request
 {
     public class Request
     {
+        
     }
 }

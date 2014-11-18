@@ -44,6 +44,7 @@
     <Compile Include="Lead\LeadLibraryResponse.cs" />
     <Compile Include="Lead\LeadRequest.cs" />
     <Compile Include="Lead\LeadResponse.cs" />
+    <Compile Include="Lead\UpdateLeadRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\Request.cs" />
     <Compile Include="Response\Response.cs" />

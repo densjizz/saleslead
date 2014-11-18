@@ -22,5 +22,11 @@ namespace Entity.Modifications
             Date = DateTime.Now;
         }
 
+
+        public void Update(string by, DateTime time)
+        {
+            By = by;
+            Date = time;
+        }
     }
 }
