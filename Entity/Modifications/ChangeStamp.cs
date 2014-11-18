@@ -16,6 +16,11 @@ namespace Entity.Modifications
             Date = DateTime.MinValue;
         }
 
+        public ChangeStamp(string byUser)
+        {
+            By = byUser;
+            Date = DateTime.Now;
+        }
 
     }
 }

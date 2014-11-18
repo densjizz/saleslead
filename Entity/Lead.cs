@@ -28,6 +28,8 @@ namespace Entity
         public ChangeStamp ModifiedStamp { get; set; }
         public ChangeStamp CreatedStamp { get; set; }
 
+        
+
         public Lead() {
             UID = Guid.NewGuid();
             
@@ -43,5 +45,16 @@ namespace Entity
             CreatedStamp.By = "System";
         }
 
+
+        public void ModifyNow(string ModifiedBy)
+        {
+            ModifiedStamp.By = ModifiedBy;
+            ModifiedStamp.Date = DateTime.Now;
+        }
+
+        public void CreatedNow(string CreatedBy) {
+            CreatedStamp.By = CreatedBy;
+            CreatedStamp.Date = DateTime.Now;
+        }
     }
 }

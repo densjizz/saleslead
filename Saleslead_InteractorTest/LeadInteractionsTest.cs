@@ -105,6 +105,22 @@ namespace Saleslead_InteractorTest
             Assert.IsTrue(delta == 1);
         }
 
+        public void ModifyLead() {
+            //Arrange
+            int index = 0;
+            LeadInteractions leadInteractions = new LeadInteractions();
+            Lead lead = leadInteractions.GetLead(index);
+            string username = "TDD";
+
+            //Act
+            DateTime now = DateTime.Now;
+            lead.ModifyNow(username);
+
+            //Assert
+            Assert.IsTrue(now - lead.ModifiedStamp.Date < new TimeSpan(0, 5, 0));
+            Assert.IsTrue(lead.ModifiedStamp.By == username);
+        }
+
         
 
 

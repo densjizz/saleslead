@@ -9,7 +9,7 @@ namespace Saleslead_InteractorTest
     public class ActionInterfactionsTest
     {
         [TestMethod]
-        public void Create()
+        public void CreateAction()
         {
             //Arrange
             LeadActionInteractions leadManager = new LeadActionInteractions();

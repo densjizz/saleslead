@@ -67,5 +67,10 @@ namespace Interactor
         {
             _leads.Delete(uid);
         }
+
+        public Lead GetLead(int index)
+        {
+            return _leads.GetLead(index);
+        }
     }
 }
