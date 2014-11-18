@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lead\CreateLeadRequest.cs" />
+    <Compile Include="Lead\CreateLeadResponse.cs" />
     <Compile Include="Lead\LeadLibraryResponse.cs" />
     <Compile Include="Lead\LeadRequest.cs" />
     <Compile Include="Lead\LeadResponse.cs" />

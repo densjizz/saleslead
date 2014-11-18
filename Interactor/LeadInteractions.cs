@@ -58,5 +58,23 @@ namespace Interactor
             Lead lead = _leads.GetLead(request.UID);
             return ConvertToLeadResponse(lead);
         }
+
+        public LeadResponse CreateLead(CreateLeadRequest createLeadRequest)
+        {
+            Lead lead = ConvertToLead(createLeadRequest);
+            _leads.AddLead(lead);
+            return ConvertToLeadResponse(lead);
+        }
+
+        private static Lead ConvertToLead(CreateLeadRequest createLeadRequest)
+        {
+            Lead lead = new Lead();
+            lead.UID = createLeadRequest.UID;
+            lead.Title = createLeadRequest.Title;
+            lead.CreatedStamp.By = createLeadRequest.CreatedBy;
+            lead.CreatedStamp.Date = createLeadRequest.CreatedDate;
+            lead.Amount = createLeadRequest.Amount;
+            return lead;
+        }
     }
 }

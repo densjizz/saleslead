@@ -17,14 +17,7 @@ namespace Entity
 
         public void LoadLeads() {
             _leads = new List<Lead>();
-            Random rdm = new Random();
-            for (int i = 0; i < 300; i++) {
-                Lead newLead = new Lead();
-                newLead.Title = "Lead Item " + i;
-                newLead.Status = new Status.Status();
-                newLead.Rating = new Rating.Rating();
-                _leads.Add(newLead);
-            }
+            CreateAndAdd300FakeLeads();
         }
 
         public Lead GetLead(int index)
@@ -61,6 +54,18 @@ namespace Entity
                     _leads.RemoveAt(i);
                     return;
                 }
+            }
+        }
+
+        private void CreateAndAdd300FakeLeads()
+        {
+            for (int i = 0; i < 300; i++)
+            {
+                Lead newLead = new Lead();
+                newLead.Title = "Lead Item " + i;
+                newLead.Status = new Status.Status();
+                newLead.Rating = new Rating.Rating();
+                _leads.Add(newLead);
             }
         }
     }

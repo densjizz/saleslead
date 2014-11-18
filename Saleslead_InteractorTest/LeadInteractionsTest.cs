@@ -39,6 +39,20 @@ namespace Saleslead_InteractorTest
             Assert.IsTrue(lead.UID == request.UID);
         }
 
+        [TestMethod]
+        public void CreateLead() {
+            //Arrange
+            LeadInteractions leadInteractions = new LeadInteractions();
+            CreateLeadRequest createLeadRequest = new CreateLeadRequest();
+
+            //Act
+            var response = leadInteractions.CreateLead(createLeadRequest);
+            
+            //assert
+            Assert.IsTrue(response != null);
+            Assert.IsTrue(response.UID == createLeadRequest.UID);
+        }
+
         
       
 
